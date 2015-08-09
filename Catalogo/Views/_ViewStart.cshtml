@@ -1,0 +1,10 @@
+﻿@{
+    if (Request.IsAjaxRequest() || !String.IsNullOrEmpty(Request["ajax"]))
+    {
+        Layout = null;
+    }
+    else
+    {
+        Layout = "Shared/_Layout.cshtml";
+    }
+}

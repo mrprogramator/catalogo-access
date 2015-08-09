@@ -1,0 +1,28 @@
+﻿<div style="padding-top: 30px; padding-left: 15px; width: 100%">
+        <tabset class="tab-container">
+            <tab ng-repeat="tab in tabs" active="tab.active" tab-highlight>
+                <tab-heading style="width:100%">
+                    <span>{{tab.title}}</span>
+                    <i class="glyphicon glyphicon-remove"
+                        ng-click="tabctrl.removeTab($index)"></i>
+                </tab-heading>
+                <div ng-hide="tab.templateUrl != null" >
+                      <form ng-submit="tab.templateUrl = tab.previewUrl">
+                        <div class="input-group " style="margin-top:-24px; right:20px">
+                          <input type="text" class="form-control" placeholder="Ingrese una URL" ng-model='tab.previewUrl'>
+                          <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-arrow-right"></span></button>
+                          </span>
+                        </div>
+                      </form>
+        
+                    <h2 class="page-header">Página vacía</h2>
+                    <blockquote>
+                        Ingrese una URL para cargar el contenido.
+                    </blockquote>
+                </div>
+                <div ng-show="tab.templateUrl != null" class="tab-body" ng-include="tab.templateUrl" ng-controller="RoutingController as routing"></div>
+          </tab>
+          <button class="btn btn-default" ng-click="tabctrl.newTab()"></button>
+    </tabset>
+    </div>
